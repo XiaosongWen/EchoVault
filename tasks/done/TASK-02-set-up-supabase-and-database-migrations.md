@@ -1,7 +1,7 @@
 # TASK-02 — Set Up Supabase and Database Migrations
 
 **Epic:** Epic 1: Project Initialization and Infrastructure  
-**Status:** Not started  
+**Status:** Completed  
 **Priority:** P0  
 **Depends on:** TASK-01  
 **Design refs:** `docs/EchoVault_BackEnd_Design.md` §2, §2.1  
@@ -9,11 +9,11 @@
 
 ## TODO
 
-- [ ] Configure the Supabase PostgreSQL connection.
-- [ ] Establish the logical entities: User, Project, Membership, Memory, Memory Revision, Transcript, and Ingestion Job.
-- [ ] Add required uniqueness constraints and query indexes.
-- [ ] Configure database migrations and test-environment initialization.
-- [ ] Define the permitted use and security boundaries of privileged database credentials.
+- [x] Configure the Supabase PostgreSQL connection.
+- [x] Establish the logical entities: User, Project, Membership, Memory, Memory Revision, Transcript, and Ingestion Job.
+- [x] Add required uniqueness constraints and query indexes.
+- [x] Configure database migrations and test-environment initialization.
+- [x] Define the permitted use and security boundaries of privileged database credentials.
 
 ## Acceptance Criteria (ACs)
 

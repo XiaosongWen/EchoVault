@@ -40,3 +40,19 @@ def test_secrets_masked_in_repr_and_str() -> None:
     assert secret_val not in repr(settings)
     assert "super-secret-jwt" not in repr(settings)
     assert "super-secret-llm" not in repr(settings)
+
+
+def test_settings_database_url_normalization() -> None:
+    s_pg = Settings(database_url="postgresql://user:pass@host:5432/db")
+    assert s_pg.async_database_url == "postgresql+asyncpg://user:pass@host:5432/db"
+
+    s_postgres = Settings(database_url="postgres://user:pass@host:5432/db")
+    assert s_postgres.async_database_url == "postgresql+asyncpg://user:pass@host:5432/db"
+
+    s_sqlite = Settings(database_url="sqlite:///tmp/test.db")
+    assert s_sqlite.async_database_url == "sqlite+aiosqlite:///tmp/test.db"
+
+    s_empty = Settings(database_url="")
+    assert s_empty.async_database_url == ""
+
+    assert s_pg.db_schema == "echovault"
