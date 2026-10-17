@@ -2,10 +2,10 @@
 
 Check a box when done, and move the task file to `tasks/done/`.
 
-**Progress: 0 / 16**
+**Progress: 1 / 16**
 
 ## Foundation
-- [ ] [TASK-01 — Initialize Backend Project](tasks/TASK-01-initialize-backend-project.md)
+- [x] [TASK-01 — Initialize Backend Project](tasks/done/TASK-01-initialize-backend-project.md)
 - [ ] [TASK-02 — Set Up Supabase and Database Migrations](tasks/TASK-02-set-up-supabase-and-database-migrations.md)
 - [ ] [TASK-03 — Implement Authentication](tasks/TASK-03-implement-authentication.md)
 - [ ] [TASK-04 — Implement Project-Level Authorization](tasks/TASK-04-implement-project-level-authorization.md)

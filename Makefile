@@ -4,6 +4,6 @@ dev:
 test:
 	uv run pytest
 lint:
-	uv run ruff check . && uv run mypy src
+	uv run ruff check . && uv run mypy src tests
 fmt:
 	uv run ruff format . && uv run ruff check --fix .

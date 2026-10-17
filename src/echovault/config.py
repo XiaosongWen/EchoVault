@@ -1,12 +1,49 @@
+from functools import lru_cache
+from typing import Literal
+
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+AppEnv = Literal["development", "testing", "production"]
+LogLevel = Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
-    app_env: str = "development"
-    log_level: str = "INFO"
+    app_name: str = "EchoVault"
+    app_version: str = "0.1.0"
+    app_env: AppEnv = "development"
+    log_level: LogLevel = "INFO"
+    log_format: Literal["auto", "json", "console"] = "auto"
+    request_id_header: str = "X-Request-ID"
+
     database_url: str = ""
+    supabase_url: str = ""
+    supabase_jwt_secret: SecretStr = SecretStr("")
+    supabase_service_role_key: SecretStr = SecretStr("")
+    llm_api_key: SecretStr = SecretStr("")
+
+    @property
+    def is_development(self) -> bool:
+        return self.app_env == "development"
+
+    @property
+    def is_testing(self) -> bool:
+        return self.app_env == "testing"
+
+    @property
+    def is_production(self) -> bool:
+        return self.app_env == "production"
 
 
-settings = Settings()
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+
+
+settings = get_settings()
